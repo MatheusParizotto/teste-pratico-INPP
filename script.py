@@ -38,6 +38,15 @@ def tratar_dados(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
+def calcular_estatisticas(df: pd.DataFrame):
+
+    # Aqui são calculadas as médias
+    print("\n Médias das colunas:\n")
+
+    print(f"Temperatura média: {df['temperatura_c'].mean():.2f} °C")
+    print(f"Nível do rio médio: {df['nivel_rio_m'].mean():.2f} m")
+    print(f"NDVI médio: {df['ndvi'].mean():.2f}")
+
 
 def main():
     caminho = "dados.xlsx"
@@ -47,6 +56,7 @@ def main():
     df = carregar_dados(caminho)
     df = tratar_dados(df)
 
+    calcular_estatisticas(df)
 
 if __name__ == "__main__":
     main()
