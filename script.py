@@ -24,7 +24,6 @@ def carregar_dados(caminho_arquivo: str) -> pd.DataFrame:
 
     # Converte coluna de data para datetime 
     df["data"] = pd.to_datetime(df["data"])
-    print(df["data"].head())
 
     return df
 
@@ -34,7 +33,6 @@ def tratar_dados(df: pd.DataFrame) -> pd.DataFrame:
     # Esse trecho trata os valores ausentes nas colunas que possuem dados incompletos
     df["nivel_rio_m"] = df["nivel_rio_m"].interpolate()
     df["ndvi"] = df["ndvi"].interpolate()
-    print("Rodou")
 
     return df
 
