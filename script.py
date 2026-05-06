@@ -45,6 +45,32 @@ def calcular_estatisticas(df: pd.DataFrame):
     print(f"Nível do rio médio: {df['nivel_rio_m'].mean():.2f} m")
     print(f"NDVI médio: {df['ndvi'].mean():.2f}")
 
+def gerar_graficos(df: pd.DataFrame):
+
+    # Gráfico de variação de temperatura 
+    plt.figure()
+    plt.plot(df["data"], df["temperatura_c"])
+    plt.title("Temperatura ao longo do tempo")
+    plt.xlabel("Data")
+    plt.ylabel("Temperatura (°C)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("temperatura.png")
+
+    # Gráfico do nível do rio
+    plt.figure()
+    plt.plot(df["data"], df["nivel_rio_m"])
+    plt.title("Nível do Rio ao longo do tempo")
+    plt.xlabel("Data")
+    plt.ylabel("Nível do Rio (m)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("nivel_rio.png")
+
+    print("\n Gráficos gerados:")
+    print("- temperatura.png")
+    print("- nivel_rio.png")
+
 
 def main():
     caminho = "dados.xlsx"
@@ -55,6 +81,7 @@ def main():
     df = tratar_dados(df)
 
     calcular_estatisticas(df)
+    gerar_graficos(df)
 
 if __name__ == "__main__":
     main()
